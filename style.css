@@ -1,0 +1,44 @@
+@font-face {
+	font-family:"LiHei"; 
+	src: url(LiHei.ttf);
+}  
+body {
+
+}
+
+.center {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 50%;
+	height: 30%;
+	margin: auto;
+}
+.slogon {
+	text-align: center;
+	font-size: 60px;
+}
+
+.green {
+	background-color: #96CE2C;
+	color: white;
+}
+
+.white {
+	background-color: #FFFBF0;
+	color:	#3F4850;
+}
+
+.gray {
+	background-color: #D4F2E7;
+	color: #3F4850;
+}
+
+.block {
+	position: relative;
+	width: 100%;
+	min-height: 800px;
+	height: 100%;
+}
