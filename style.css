@@ -20,7 +20,18 @@ body {
 
 .slogon {
 	text-align: center;
-	font-size: 60px;
+	font-size: 60px;	
+}
+
+.introduction {	
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 80%;
+	height: 70%;
+	margin: auto;
 }
 
 .green {
