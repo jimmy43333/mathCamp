@@ -1,3 +1,83 @@
+function changeFormZero(){
+	$('#joinForm').html(
+	"<div class='animated fadeIn'>\
+		<p align='center'>放輕鬆，報名松數營很簡單！</p>\
+			<div class='form-group'>\
+				<label for='name' class='col-sm-4 control-label'>姓名</label>\
+				<div class='col-sm-8'>\
+					<input type='text' class='form-control required' id='name' placeholder='姓名'>\
+				</div>\
+			</div>\
+			<div class='form-group'>\
+				<label for='nickname' class='col-sm-4 control-label'>綽號</label>\
+				<div class='col-sm-8'>\
+					<input type='text' class='form-control required' id='nickname' placeholder='綽號'>\
+				</div>\
+			</div>\
+			<div class='form-group'>\
+				<label for='sex' class='col-sm-4 control-label'>姓別</label>\
+				<div class='col-sm-8'>\
+					<div class='radio-inline'>\
+						<label>\
+							<input type='radio' name='optionsRadios' id='optionsRadios1' value='option1' checked>\
+							男\
+						</label>\
+					</div>\
+					<div class='radio-inline'>\
+						<label>\
+							<input type='radio' name='optionsRadios' id='optionsRadios2' value='option2'>\
+							女\
+						</label>\
+					</div>\
+				</div>\
+			</div>\
+			<div class='form-group'>\
+				<label for='securityNumber' class='col-sm-4 control-label'>身分證字號</label>	\
+				<div class='col-sm-8'>\
+					<input type='text' class='form-control required' id='securityNumber' placeholder='身分證字號'>\
+				</div>\
+			</div>\
+			<div class='form-group'>\
+				<label for='phone' class='col-sm-4 control-label'>聯絡電話</label>\
+				<div class='col-sm-8'>\
+					<input type='text' class='form-control required digits' id='phone' placeholder='聯絡電話'>\
+				</div>\
+			</div>\
+			<div class='form-group'>\
+				<label for='cellphone' class='col-sm-4 control-label'>手機</label>\
+				<div class='col-sm-8'>\
+					<input type='text' class='form-control required digits' id='cellphone' placeholder='手機'>\
+				</div>\
+			</div>\
+			<div class='form-group'>\
+				<label for='address' class='col-sm-4 control-label'>聯絡地址</label>	\
+				<div class='col-sm-8'>\
+					<input type='text' class='form-control required' id='address' placeholder='聯絡地址'>\
+				</div>\
+			</div>\
+			<div class='form-group'>\
+				<label for='email' class='col-sm-4 control-label'>Email</label>	\
+				<div class='col-sm-8'>\
+					<input type='text' class='form-control required email' id='email' placeholder='Email'>\
+				</div>\
+			</div>\
+			<div class='form-group'>\
+				<label for='school' class='col-sm-4 control-label'>就讀學校</label>\
+				<div class='col-sm-8'>\
+					<input type='text' class='form-control' id='school' placeholder='就讀學校'>\
+				</div>\
+			</div>\
+			<div class='form-group'>\
+				<label for='grade' class='col-sm-4 control-label'>年級</label>\
+				<div class='col-sm-8'>\
+					<input type='text' class='form-control' id='grade' placeholder='年級'>\
+				</div>\
+			</div>\
+			<div align='right'><button type='button' class='btn btn-default submit' onclick='changeFormOne()'>下一步</button></div>\
+		</div>\
+	");
+}
+
 function changeFormOne(){
 	$('#joinForm').html(
 			"<div class='animated fadeIn'>\
@@ -26,7 +106,8 @@ function changeFormOne(){
 			<input type='text' class='form-control' id='prarentsAddress' placeholder='地址'>\
 			</div>\
 			</div>\
-			<div align='right'><button type='button' class='btn btn-default submit' onclick='changeFormTwo()'>下一步</button></div>\
+			<div align='right'><button type='button' class='btn btn-default submit' onclick='changeFormZero()'>上一步</button>\
+			<button type='button' class='btn btn-default submit' onclick='changeFormTwo()'>下一步</button></div>\
 			<div>\
 			");
 }
@@ -130,7 +211,8 @@ function changeFormTwo(){
 				<input type='other' class='form-control' id='other2' placeholder='其他'>\
 			</div>\
 		</div>\
-		<div align='right'><button type='button' class='btn btn-default submit' onclick='changeFormThree()'>下一步</button></div>\
+		<div align='right'><div align='right'><button type='button' class='btn btn-default submit' onclick='changeFormOne()'>上一步</button>\
+		<button type='button' class='btn btn-default submit' onclick='changeFormThree()'>下一步</button></div>\
 	</div>\
 	");
 }
