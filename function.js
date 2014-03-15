@@ -70,5 +70,94 @@ function changeFormTwo(){
 				</div>\
 			</div>\
 		</div>\
+		<div class='form-group'>\
+			<label for='diet' class='col-sm-4 control-label'>特殊飲食習慣</label>\
+			<div class='col-sm-8'>\
+				<div class='radio-inline'>\
+					<label>\
+						<input type='radio' name='diet' id='TwoXL' value='diet1' checked>\
+						葷\
+					</label>\
+				</div>\
+				<div class='radio-inline'>\
+					<label>\
+						<input type='radio' name='diet' id='XL' value='diet2'>\
+						素\
+					</label>\
+				</div>\
+				<input type='other' class='form-control' id='other' placeholder='其他'>\
+			</div>\
+		</div>\
+		<div class='form-group'>\
+			<label for='diet' class='col-sm-4 control-label'>特殊病例</label>\
+			<div class='col-sm-8'>\
+				<div class='checkbox-inline'>\
+					<label>\
+						<input type='checkbox' id='illness2' value='illness2'>\
+						無\
+					</label>\
+				</div>\
+				<div class='checkbox-inline'>\
+					<label>\
+						<input type='checkbox' id='illness1' value='illness1'>\
+						心臟病\
+					</label>\
+				</div>\
+				<div class='checkbox-inline'>\
+					<label>\
+						<input type='checkbox' id='illness2' value='illness2'>\
+						癲險\
+					</label>\
+				</div>\
+				<div class='checkbox-inline'>\
+					<label>\
+						<input type='checkbox' id='illness2' value='illness2'>\
+						氣喘\
+					</label>\
+				</div>\
+				<div class='checkbox-inline'>\
+					<label>\
+						<input type='checkbox' id='illness2' value='illness2'>\
+						貧血\
+					</label>\
+				</div>\
+				<div class='checkbox-inline'>\
+					<label>\
+						<input type='checkbox' id='illness2' value='illness2'>\
+						高血壓蠶豆症\
+					</label>\
+				</div>\
+				<input type='other' class='form-control' id='other2' placeholder='其他'>\
+			</div>\
+		</div>\
+		<div align='right'><button type='button' class='btn btn-default submit' onclick='changeFormThree()'>下一步</button></div>\
+	</div>\
+	");
+}
+
+function changeFormThree(){
+	$('#joinForm').html(
+	"<div class='animated fadeIn'>\
+		<p align='center'>最後最後，來個自我介紹吧！</p>\
+		<div class='form-group'>\
+			<label for='introduction' class='col-sm-4 control-label'>自我介紹</label>\
+			<div class='col-sm-8'>\
+				<textarea class='form-control' rows='4'></textarea>\
+			</div>\
+		</div>\
+		<div class='form-group'>\
+			<label for='introduction' class='col-sm-4 control-label'>你是怎麼知道我們的</label>\
+			<div class='col-sm-8'>\
+				<textarea class='form-control' rows='2'></textarea>\
+			</div>\
+		</div>\
+		<div class='form-group'>\
+			<label for='introduction' class='col-sm-4 control-label'>備註</label>\
+			<div class='col-sm-8'>\
+				<textarea class='form-control' rows='2'></textarea>\
+			</div>\
+		</div>\
+		<div class='alert alert-danger'>不過......這個網站還沒完成，現在還不能報名噢！</div>\
+	</div>\
 	");
 }
