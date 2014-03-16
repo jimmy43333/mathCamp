@@ -68,3 +68,12 @@ body {
 	right: 0;
 	margin: auto;
 }
+
+.photoBackground {
+	color: white;
+	background: url(images/cover.jpg) no-repeat center center;    
+	-webkit-background-size: cover;   
+	-moz-background-size: cover;   
+	-o-background-size: cover;   
+	background-size: cover; 
+}
