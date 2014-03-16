@@ -1,11 +1,35 @@
-function changeFormZero(){
+function storageFormOne(){
+	var nickname=$('#nickname').val();
+	var securityNumber=$('#securityNumber').val();
+	var phone=$('#phone').val();
+	var cellphone=$('#cellhone').val();
+	var address=$('#address').val();
+	var email=$('#email').val();
+	var school=$('#school').val();
+	var grade=$('#grade').val();
+	$.ajax({
+		type: 'POST',
+		url:'processJoin.php',
+		data: {
+			name: $('#name').val()
+		},
+		error:function(){
+			alert('資料傳輸錯誤耶！請確認您的網路是否連接正常');
+		},
+		success:function(){
+			showFormOne();
+		}
+	});
+}
+
+function showFormZero(){
 	$('#joinForm').html(
 	"<div class='animated fadeIn'>\
 		<p align='center'>放輕鬆，報名松數營很簡單！</p>\
 			<div class='form-group'>\
 				<label for='name' class='col-sm-4 control-label'>姓名</label>\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control required' id='name' placeholder='姓名'>\
+					<input type='text' class='form-control required' id='name' name='name'  placeholder='姓名'>\
 				</div>\
 			</div>\
 			<div class='form-group'>\
@@ -73,12 +97,12 @@ function changeFormZero(){
 					<input type='text' class='form-control' id='grade' placeholder='年級'>\
 				</div>\
 			</div>\
-			<div align='right'><button type='button' class='btn btn-default submit' onclick='changeFormOne()'>下一步</button></div>\
+			<div align='right'><button type='button' class='btn btn-default submit' onclick='storageDataOne()'>下一步</button></div>\
 		</div>\
 	");
 }
 
-function changeFormOne(){
+function showFormOne(){
 	$('#joinForm').html(
 			"<div class='animated fadeIn'>\
 			<p align='center' class='lead'>這很重要，關於你的緊急聯絡人</p>\
@@ -224,7 +248,7 @@ function changeFormThree(){
 		<div class='form-group'>\
 			<label for='introduction' class='col-sm-4 control-label'>自我介紹</label>\
 			<div class='col-sm-8'>\
-				<textarea class='form-control' rows='4'></textarea>\
+				<textarea class='form-control' rows='4' name='introduction'></textarea>\
 			</div>\
 		</div>\
 		<div class='form-group'>\
@@ -239,7 +263,16 @@ function changeFormThree(){
 				<textarea class='form-control' rows='2'></textarea>\
 			</div>\
 		</div>\
+		<div align='right'>\
+			<button type='button' class='btn btn-default submit' onclick='checkResult()'>完成</button>\
+		</div>\
+		<!-- \
 		<div class='alert alert-danger'>不過......這個網站還沒完成，現在還不能報名噢！</div>\
-	</div>\
+		-->\
+		</div>\
 	");
+}
+
+function checkResult(){
+	$('.joinForm').html("<p>恭喜你報名成功</p>");
 }
