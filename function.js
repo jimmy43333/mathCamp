@@ -9,18 +9,29 @@ function storageForm(){
 		allData['sex'] = $('input[name=sex]:checked', '#joinForm').val();
 		$.ajax({
 			type: 'POST',
-			url:'processJoin.php?id=0',
+			url:'processJoin.php',
 			data: {
-				name: $('#name').val(),
-				nickname: $('#nickname').val(),
-				sex: $('input[name=sex]:checked', '#joinForm').val(),
-				securityNumber: $('#securityNumber').val(),
-				phone: $('#phone').val(),
-				cellphone: $('#cellhone').val(),
-				address: $('#address').val(),
-				email: $('#email').val(),
-				school: $('#school').val(),
-				grade: $('#grade').val()
+				name: allData['name'],
+				nickname: allData['nickname'],
+				sex: allData['sex'],
+				securityNumber: allData['securityNumber'],
+				phone: allData['phone'],
+				cellphone: allData['cellphone'],
+				address: allData['address'],
+				email: allData['email'],
+				school: allData['school'],
+				grade: allData['grade'],
+				parentsName: allData['parentsName'],
+				parentsRelation: allData['parentsRelation'],
+				parentsPhone: allData['parentsPhone'],
+				parentsAddress: allData['parentsAddress'],
+				tshirtsize: allData['tshirtsize'],
+				diet: allData['diet'],
+				otherDietInfo: allData['otherDietInfo'],
+				illness: allData['illness'],
+				introduction: allData['introduction'],
+				source: allData['source'],
+				addition: allData['addition']
 			},
 			error:function(){
 				alert('資料傳輸錯誤耶！請確認您的網路是否連接正常');
@@ -32,16 +43,6 @@ function storageForm(){
 	}
 }
 
-function showFormZero(){
-	$('#joinForm').load('form/formZero.html');
-	// Show previous value user type.
-	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
-	for (var i = 0; i < id.length; i++){
-		$('#' + id[i]).attr('value', allData[id[i]]);
-	}
-	$('#' + allData['sex']).attr('checked', true);
-}
-
 function checkForm(id, idName){
 	var result = true;
 	for (var i = 0; i < id.length; i++){
@@ -51,9 +52,24 @@ function checkForm(id, idName){
 			$('#' + id[i]).attr('placeholder', '別忘了輸入你的' + idName[i] + '啊！');
 			result = false;
 		}
-	}
-	
+	}	
 	return result;
+}
+
+function storageData(id){
+	for (var i = 0; i < id.length; i++){
+		allData[id[i]] = $('#' + id[i]).val();
+	}
+}
+
+function showFormZero(){
+	$('#joinForm').load('form/formZero.html');
+	// Show previous value user type.
+	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
+	for (var i = 0; i < id.length; i++){
+		$('input[name="' + id[i] + '"]').val(allData[id[i]]);
+	}
+	$('#' + allData['sex']).attr('checked', true);
 }
 
 function showFormOne(){
@@ -61,12 +77,8 @@ function showFormOne(){
 	var idName = ['大名', '綽號', '身分證字號', '電話', '手機', '地址', 'email', '學校', '年級'];
 	if(checkForm(id, idName)){
 		// Storage data
-		var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
-		for (var i = 0; i < id.length; i++){
-			allData[id[i]] = $('#' + id[i]).val();
-		}
-		allData['sex'] = $('input[name=sex]:checked', '#joinForm').val();
-		
+		storageData(id);
+		allData['sex'] = $('input[name=sex]:checked', '#joinForm').val();	
 		$('#joinForm').load('form/formOne.html');
 	}
 }
@@ -75,16 +87,44 @@ function showFormTwo(){
 	var id = ['parentsName', 'parentsRelation', 'parentsPhone', 'parentsAddress'];
 	var idName = ['聯絡人姓名', '緊急聯絡人的關係', '緊急聯絡人的電話', '緊急聯絡人的地址'];
 	if (checkForm(id, idName)){
+		// Storage data
+		storageData(id);
 		$('#joinForm').load('form/formTwo.html')
 	}
 }
 
 function showFormThree(){
+	allData['tshirtsize'] = $('input[name=tshirtsize]:checked', '#joinForm').val();
+	allData['diet'] =  $('input[name=diet]:checked', '#joinForm').val();
+	allData['otherDietInfo'] = $('#otherDietInfo').val();
+	var illnessId = ['無', '心臟病', '癲險', '氣喘', '貧血', '高血壓蠶豆症'];
+	allData['illness'] = '';
+	for (var i = 0; i < illnessId.length; i++){
+		if ($('#illness' + i).attr('checked'))
+			allData['illness'] = allData['illness'] + '、'  + illnessId[i];
+	}
+	allData['illness'] = allData['illness'] + $('#illnessInfo').val();
 	$('#joinForm').load('form/formThree.html');
 }
 
 function checkResult(){
-	$('.joinForm').html("<p>恭喜你報名成功</p>");
+	var id = ['introduction', 'source'];
+	var idName = ['自我介紹', '訊息來源'];
+	if (checkForm(id, idName)){
+		// Storage data
+		storageData(id);
+		allData['addition'] = $('#addition').val();
+		var allId = ['name', 'nickname', 'sex', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade', 'parentsName', 'parentsRelation', 'parentsPhone', 'parentsAddress', 'tshirtsize', 'diet', 'otherDietInfo', 'illness', 'introduction', 'source', 'addition'];
+		var allIdName = ['姓名', '綽號', '性別', '身分證字號', '聯絡電話', '手機', '地址', 'email', '學校', '年級', '緊急聯絡人姓名', '緊急聯絡人關係', '緊急聯絡人電話', '緊急聯絡人地址', 'T-shirt大小', '飲食','特殊飲食習慣', '疾病', '自我介紹', '營隊訊息來源', '備註'];
+		var result = '<h3>恭喜你填完報名表了！<br>來確認一下你的資料吧</h3><dl class="dl-horizontal">';
+		for (var i = 0; i < allId.length; i++){
+			if (allData[allId[i]] == '')
+				allData[allId[i]] = '無';
+			result = result + '<dt>' + allIdName[i] + '</dt><dd>'  + allData[allId[i]] + '</dd>';
+		}
+		result = result + '</dl>';
+		$('.joinForm').html(result);
+	}
 }
 
 function checkID(id) {
