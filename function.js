@@ -1,17 +1,31 @@
+function checkFormOne(){
+	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
+	var idName = ['大名', '綽號', '身分證字號', '電話', '手機', '地址', 'email', '學校', '年級'];
+	for (var i = 0; i < id.length; i++){
+		$('#' + id[i] + 'Form').removeClass('has-error');
+		if ($('#' + id[i]).val() == ''){
+			$('#' + id[i] + 'Form').addClass('has-error');
+			$('#' + id[i]).attr('placeholder', '別忘了輸入你的' + idName[i] + '啊！');
+		}
+	}
+	//checkSecurity number
+}
+
 function storageFormOne(){
-	var nickname=$('#nickname').val();
-	var securityNumber=$('#securityNumber').val();
-	var phone=$('#phone').val();
-	var cellphone=$('#cellhone').val();
-	var address=$('#address').val();
-	var email=$('#email').val();
-	var school=$('#school').val();
-	var grade=$('#grade').val();
 	$.ajax({
 		type: 'POST',
-		url:'processJoin.php',
+		url:'processJoin.php?id=0',
 		data: {
-			name: $('#name').val()
+			name: $('#name').val(),
+			nickname: $('#nickname').val(),
+			sex: $('input[name=sex]:checked', '#joinForm').val(),
+			securityNumber: $('#securityNumber').val(),
+			phone: $('#phone').val(),
+			cellphone: $('#cellhone').val(),
+			address: $('#address').val(),
+			email: $('#email').val(),
+			school: $('#school').val(),
+			grade: $('#grade').val()
 		},
 		error:function(){
 			alert('資料傳輸錯誤耶！請確認您的網路是否連接正常');
@@ -26,16 +40,16 @@ function showFormZero(){
 	$('#joinForm').html(
 	"<div class='animated fadeIn'>\
 		<p align='center'>放輕鬆，報名松數營很簡單！</p>\
-			<div class='form-group'>\
-				<label for='name' class='col-sm-4 control-label'>姓名</label>\
+			<div class='form-group' id='nameForm'>\
+				<label for='name' class='col-sm-4 control-label required'>姓名</label>\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control required' id='name' name='name'  placeholder='姓名'>\
+					<input type='text' class='form-control' id='name' name='name'  placeholder='姓名'>\
 				</div>\
 			</div>\
-			<div class='form-group'>\
+			<div class='form-group' id='nicknameForm'>\
 				<label for='nickname' class='col-sm-4 control-label'>綽號</label>\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control required' id='nickname' placeholder='綽號'>\
+					<input type='text' class='form-control required' id='nickname' name='nickname' placeholder='綽號'>\
 				</div>\
 			</div>\
 			<div class='form-group'>\
@@ -43,61 +57,61 @@ function showFormZero(){
 				<div class='col-sm-8'>\
 					<div class='radio-inline'>\
 						<label>\
-							<input type='radio' name='optionsRadios' id='optionsRadios1' value='option1' checked>\
+							<input type='radio' name='sex' id='boy' value='boy' checked>\
 							男\
 						</label>\
 					</div>\
 					<div class='radio-inline'>\
 						<label>\
-							<input type='radio' name='optionsRadios' id='optionsRadios2' value='option2'>\
+							<input type='radio' name='sex' id='girl' value='girl'>\
 							女\
 						</label>\
 					</div>\
 				</div>\
 			</div>\
-			<div class='form-group'>\
+			<div class='form-group' id='securityNumberForm'>\
 				<label for='securityNumber' class='col-sm-4 control-label'>身分證字號</label>	\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control required' id='securityNumber' placeholder='身分證字號'>\
+					<input type='text' class='form-control required' id='securityNumber' name='ncickname'  placeholder='身分證字號'>\
 				</div>\
 			</div>\
-			<div class='form-group'>\
+			<div class='form-group' id='phoneForm'>\
 				<label for='phone' class='col-sm-4 control-label'>聯絡電話</label>\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control required digits' id='phone' placeholder='聯絡電話'>\
+					<input type='text' class='form-control required digits' id='phone' name='phone'  placeholder='聯絡電話'>\
 				</div>\
 			</div>\
-			<div class='form-group'>\
+			<div class='form-group' id='cellphoneForm'>\
 				<label for='cellphone' class='col-sm-4 control-label'>手機</label>\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control required digits' id='cellphone' placeholder='手機'>\
+					<input type='text' class='form-control required digits' id='cellphone' name='cellphone'  placeholder='手機'>\
 				</div>\
 			</div>\
-			<div class='form-group'>\
+			<div class='form-group' id='addressForm'>\
 				<label for='address' class='col-sm-4 control-label'>聯絡地址</label>	\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control required' id='address' placeholder='聯絡地址'>\
+					<input type='text' class='form-control required' id='address' name='address'  placeholder='聯絡地址'>\
 				</div>\
 			</div>\
-			<div class='form-group'>\
+			<div class='form-group' id='emailForm'>\
 				<label for='email' class='col-sm-4 control-label'>Email</label>	\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control required email' id='email' placeholder='Email'>\
+					<input type='text' class='form-control required email' id='email' name='email'  placeholder='Email'>\
 				</div>\
 			</div>\
-			<div class='form-group'>\
+			<div class='form-group' id='schoolForm'>\
 				<label for='school' class='col-sm-4 control-label'>就讀學校</label>\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control' id='school' placeholder='就讀學校'>\
+					<input type='text' class='form-control' id='school' name='school'  placeholder='就讀學校'>\
 				</div>\
 			</div>\
-			<div class='form-group'>\
+			<div class='form-group' id='gradeForm'>\
 				<label for='grade' class='col-sm-4 control-label'>年級</label>\
 				<div class='col-sm-8'>\
-					<input type='text' class='form-control' id='grade' placeholder='年級'>\
+					<input type='text' class='form-control' id='grade' name='grade'  placeholder='年級'>\
 				</div>\
 			</div>\
-			<div align='right'><button type='button' class='btn btn-default submit' onclick='storageDataOne()'>下一步</button></div>\
+			<div align='right'><button type='button' class='btn btn-default submit' onclick='checkFormOne()'>下一步</button></div>\
 		</div>\
 	");
 }
