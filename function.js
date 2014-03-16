@@ -37,7 +37,7 @@ function storageForm(){
 				alert('資料傳輸錯誤耶！請確認您的網路是否連接正常');
 			},
 			success:function(){
-				showFormOne();
+				alert('success');
 			}
 		});
 	}
