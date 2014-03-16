@@ -1,7 +1,8 @@
 @font-face {
 	font-family:"LiHei"; 
 	src: url(LiHei.ttf);
-}  
+}
+
 body {
 	font-size: 16px;
 }
@@ -12,17 +13,29 @@ body {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	width: 50%;
+	width: 80%;
 	height: 30%;
 	margin: auto;
 }
+
 .slogon {
 	text-align: center;
-	font-size: 60px;
+	font-size: 60px;	
+}
+
+.introduction {	
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 80%;
+	height: 70%;
+	margin: auto;
 }
 
 .green {
-	background-color: #96CE2C;
+	background-color: #5A8F31;
 	color: white;
 }
 
@@ -41,4 +54,26 @@ body {
 	width: 100%;
 	min-height: 800px;
 	height: 100%;
+}
+
+.joinForm {
+	position: absolute;
+	min-width: 200px;
+	width: 50%;
+	max-width: 600px;
+	height: 50%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.photoBackground {
+	color: white;
+	background: url(images/cover.jpg) no-repeat center center;    
+	-webkit-background-size: cover;   
+	-moz-background-size: cover;   
+	-o-background-size: cover;   
+	background-size: cover; 
 }
