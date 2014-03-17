@@ -1,9 +1,9 @@
 <?php
 session_start();
-$_SESSION['test'] = 'test';
+$_SESSION['test' = 'test';
 define('DB_NAME','camp_data');
 define('DB_USER','root');
-define('DB_PASSWD','[mathcamp@MCL]');
+define('DB_PASSWD','[mathcamp@MCL');
 define('DB_HOST','localhost');
 define('DB_TYPE','mysql');
 $connect = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWD);
@@ -31,27 +31,27 @@ $result = $connect->prepare("INSERT into join_member values(
 									:source, 
 									:addition)");
 $where = array(
-			':name' => $_POST['name'], 
-			':nickname' => $_POST['nickname'], 
-			':sex' => $_POST['sex'], 
-			':securityNumber' => $_POST['securityNumber'], 
-			':phone' => $_POST['phone'], 
-			':cellphone' => $_POST['cellphone'], 
-			':address' => $_POST['address'],
-			':email' => $_POST['email'], 
-			':school' => $_POST['school'], 
-			':grade' => $_POST['grade'], 
-			':parentsName' => $_POST['parentsName'], 
-			':parentsRelation' => $_POST['parentsRelation'],
-			':parentsPhone' => $_POST['parentsPhone'], 
-			':parentsAddress' => $_POST['parentsAddress'],
-			':tshirtsize' => $_POST['tshirtsize'], 
-			':diet' => $_POST['diet'], 
-			':otherDietInfo' => $_POST['otherDietInfo'], 
-			':illness' => $_POST['illness'], 
-			':introduction' => $_POST['introduction'], 
-			':source' => $_POST['source'], 
-			':addition' => $_POST['addition']);
+			':name' => 'name', 
+			':nickname' => 'nickname', 
+			':sex' => 'sex', 
+			':securityNumber' => 'securityNumber', 
+			':phone' => 'phone', 
+			':cellphone' => 'cellphone', 
+			':address' => 'address',
+			':email' => 'email', 
+			':school' => 'school', 
+			':grade' => 'grade', 
+			':parentsName' => 'parentsName', 
+			':parentsRelation' => 'parentsRelation',
+			':parentsPhone' => 'parentsPhone', 
+			':parentsAddress' => 'parentsAddress',
+			':tshirtsize' => 'tshirtsize', 
+			':diet' => 'diet', 
+			':otherDietInfo' => 'otherDietInfo', 
+			':illness' => 'illness', 
+			':introduction' => 'introduction', 
+			':source' => 'source', 
+			':addition' => 'addition');
 $result->execute($where);
 echo 'yes';
 ?>
