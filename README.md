@@ -13,6 +13,8 @@ http://daneden.github.io/animate.css/
 ###twitter bootstrap###
 http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
 
+###jQuery###
+
 Bugs
 ----------
 Some bugs waiting for fixing.
