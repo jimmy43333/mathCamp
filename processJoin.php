@@ -5,7 +5,7 @@ define('DB_PASSWD','[mathcamp@MCL]');
 define('DB_HOST','localhost');
 define('DB_TYPE','mysql');
 $connect = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWD);
-$connect->query('GET NAMES UTF8');
+$connect->query('SET NAMES UTF8');
 $result = $connect->prepare("INSERT into join_member values(
 									:name, 
 									:nickname, 
@@ -29,27 +29,27 @@ $result = $connect->prepare("INSERT into join_member values(
 									:source, 
 									:addition)");
 $where = array(
-			':name' => $_GET['name'], 
-			':nickname' => $_GET['nickname'], 
-			':sex' => $_GET['sex'], 
-			':securityNumber' => $_GET['securityNumber'], 
-			':phone' => $_GET['phone'], 
-			':cellphone' => $_GET['cellphone'], 
-			':address' => $_GET['address'],
-			':email' => $_GET['email'], 
-			':school' => $_GET['school'], 
-			':grade' => $_GET['grade'], 
-			':parentsName' => $_GET['parentsName'], 
-			':parentsRelation' => $_GET['parentsRelation'],
-			':parentsPhone' => $_GET['parentsPhone'], 
-			':parentsAddress' => $_GET['parentsAddress'],
-			':tshirtsize' => $_GET['tshirtsize'], 
-			':diet' => $_GET['diet'], 
-			':otherDietInfo' => $_GET['otherDietInfo'], 
-			':illness' => $_GET['illness'], 
-			':introduction' => $_GET['introduction'], 
-			':source' => $_GET['source'], 
-			':addition' => $_GET['addition']);
+			':name' => $_POST['name'], 
+			':nickname' => $_POST['nickname'], 
+			':sex' => $_POST['sex'], 
+			':securityNumber' => $_POST['securityNumber'], 
+			':phone' => $_POST['phone'], 
+			':cellphone' => $_POST['cellphone'], 
+			':address' => $_POST['address'],
+			':email' => $_POST['email'], 
+			':school' => $_POST['school'], 
+			':grade' => $_POST['grade'], 
+			':parentsName' => $_POST['parentsName'], 
+			':parentsRelation' => $_POST['parentsRelation'],
+			':parentsPhone' => $_POST['parentsPhone'], 
+			':parentsAddress' => $_POST['parentsAddress'],
+			':tshirtsize' => $_POST['tshirtsize'], 
+			':diet' => $_POST['diet'], 
+			':otherDietInfo' => $_POST['otherDietInfo'], 
+			':illness' => $_POST['illness'], 
+			':introduction' => $_POST['introduction'], 
+			':source' => $_POST['source'], 
+			':addition' => $_POST['addition']);
 $result->execute($where);
 echo 'yes';
 ?>
