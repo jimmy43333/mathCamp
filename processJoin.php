@@ -1,9 +1,7 @@
 <?php
-session_start();
-$_SESSION['test' = 'test';
 define('DB_NAME','camp_data');
 define('DB_USER','root');
-define('DB_PASSWD','[mathcamp@MCL');
+define('DB_PASSWD','[mathcamp@MCL]');
 define('DB_HOST','localhost');
 define('DB_TYPE','mysql');
 $connect = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWD);
