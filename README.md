@@ -1,4 +1,4 @@
-mathCamp
+NCU Math Camp Web
 ========
 
 All about math camp web design.
