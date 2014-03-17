@@ -47,4 +47,5 @@ $where = array(
 			':source' => $_POST['source'], 
 			':addition' => $_POST['addition']);
 $result->execute($where);
+mail('kill.xmurderer@gmail.com', 'test', 'test');
 ?>

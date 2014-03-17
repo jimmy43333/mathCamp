@@ -32,21 +32,22 @@ function storageForm(){
 			alert('資料傳輸錯誤耶！請確認您的網路是否連接正常');
 		},
 		success:function(msg){
-			alert('success' + msg);
+			var result = "<div id='center'><h3>恭喜你報名成功了!</h3></div>";
+			$('.joinForm').html(result);
 		}
 	});
 }
 
 function checkForm(id, idName){
 	var result = true;
-	/*for (var i = 0; i < id.length; i++){
+	for (var i = 0; i < id.length; i++){
 		$('#' + id[i] + 'Form').removeClass('has-error');
 		if ($('#' + id[i]).val() == ''){
 			$('#' + id[i] + 'Form').addClass('has-error');
 			$('#' + id[i]).attr('placeholder', '別忘了輸入你的' + idName[i] + '啊！');
 			result = false;
 		}
-	}*/	
+	}	
 	return result;
 }
 
@@ -61,9 +62,9 @@ function showFormZero(){
 	// Show previous value user type.
 	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
 	for (var i = 0; i < id.length; i++){
-		$('input[name="' + id[i] + '"]').val(allData[id[i]]);
+		$('#' + id[i]).attr('value', allData[id[i]]);
 	}
-	$('#' + allData['sex']).attr('checked', true);
+	//$('#' + allData['sex']).attr('checked', true);
 }
 
 function showFormOne(){
