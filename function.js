@@ -37,7 +37,7 @@ function storageForm(){
 				alert('資料傳輸錯誤耶！請確認您的網路是否連接正常');
 			},
 			success:function(){
-				showFormOne();
+				alert('success');
 			}
 		});
 	}
@@ -123,6 +123,7 @@ function checkResult(){
 			result = result + '<dt>' + allIdName[i] + '</dt><dd>'  + allData[allId[i]] + '</dd>';
 		}
 		result = result + '</dl>';
+		result = result + "<div align='center'><button type='button' class='btn btn-default submit' onclick='storageForm()'>確認送出</button></div>";
 		$('.joinForm').html(result);
 	}
 }
