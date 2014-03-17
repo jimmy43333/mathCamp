@@ -1,46 +1,39 @@
 var allData = [];
 
 function storageForm(){
-	if(checkFormOne()){
-		var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
-		for (var i = 0; i < id.length; i++){
-			allData[id[i]] = $('#' + id[i]).val();
+	$.ajax({
+		type: 'POST',
+		url:'processJoin.php',
+		data: {
+			name: allData['name'],
+			nickname: allData['nickname'],
+			sex: allData['sex'],
+			securityNumber: allData['securityNumber'],
+			phone: allData['phone'],
+			cellphone: allData['cellphone'],
+			address: allData['address'],
+			email: allData['email'],
+			school: allData['school'],
+			grade: allData['grade'],
+			parentsName: allData['parentsName'],
+			parentsRelation: allData['parentsRelation'],
+			parentsPhone: allData['parentsPhone'],
+			parentsAddress: allData['parentsAddress'],
+			tshirtsize: allData['tshirtsize'],
+			diet: allData['diet'],
+			otherDietInfo: allData['otherDietInfo'],
+			illness: allData['illness'],
+			introduction: allData['introduction'],
+			source: allData['source'],
+			addition: allData['addition']
+		},
+		error:function(){
+			alert('資料傳輸錯誤耶！請確認您的網路是否連接正常');
+		},
+		success:function(){
+			alert('success');
 		}
-		allData['sex'] = $('input[name=sex]:checked', '#joinForm').val();
-		$.ajax({
-			type: 'POST',
-			url:'processJoin.php',
-			data: {
-				name: allData['name'],
-				nickname: allData['nickname'],
-				sex: allData['sex'],
-				securityNumber: allData['securityNumber'],
-				phone: allData['phone'],
-				cellphone: allData['cellphone'],
-				address: allData['address'],
-				email: allData['email'],
-				school: allData['school'],
-				grade: allData['grade'],
-				parentsName: allData['parentsName'],
-				parentsRelation: allData['parentsRelation'],
-				parentsPhone: allData['parentsPhone'],
-				parentsAddress: allData['parentsAddress'],
-				tshirtsize: allData['tshirtsize'],
-				diet: allData['diet'],
-				otherDietInfo: allData['otherDietInfo'],
-				illness: allData['illness'],
-				introduction: allData['introduction'],
-				source: allData['source'],
-				addition: allData['addition']
-			},
-			error:function(){
-				alert('資料傳輸錯誤耶！請確認您的網路是否連接正常');
-			},
-			success:function(){
-				alert('success');
-			}
-		});
-	}
+	});
 }
 
 function checkForm(id, idName){
