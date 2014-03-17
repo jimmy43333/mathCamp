@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION['test'] = 'test';
 define('DB_NAME','camp_data');
 define('DB_USER','root');
 define('DB_PASSWD','[mathcamp@MCL]');
