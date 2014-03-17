@@ -1,5 +1,9 @@
 <?php
-include '../sqlInfo.php';
+define('DB_NAME','camp_data');
+define('DB_USER','root');
+define('DB_PASSWD','[mathcamp@MCL]');
+define('DB_HOST','localhost');
+define('DB_TYPE','mysql');
 $connect = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWD);
 $connect->query('GET NAMES UTF8');
 $result = $connect->prepare("INSERT into join_member values(:name, :nickname, :sex, :securityNumber, :phone, :cellphone, :address, :email, :school, :grade, :parentsName, :parentsRelation, :parentsPhone, :parentsAddress, :tshirtsize, :diet, :otherDietInfo, :illness, :introduction, :source, :addition");
