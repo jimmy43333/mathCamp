@@ -5,6 +5,7 @@ function storageForm(){
 		type: 'POST',
 		url:'processJoin.php',
 		data: {
+			test: 'fucnk',
 			name: allData['name'],
 			nickname: allData['nickname'],
 			sex: allData['sex'],
@@ -30,22 +31,22 @@ function storageForm(){
 		error:function(){
 			alert('資料傳輸錯誤耶！請確認您的網路是否連接正常');
 		},
-		success:function(){
-			alert('success');
+		success:function(msg){
+			alert('success' + msg);
 		}
 	});
 }
 
 function checkForm(id, idName){
 	var result = true;
-	for (var i = 0; i < id.length; i++){
+	/*for (var i = 0; i < id.length; i++){
 		$('#' + id[i] + 'Form').removeClass('has-error');
 		if ($('#' + id[i]).val() == ''){
 			$('#' + id[i] + 'Form').addClass('has-error');
 			$('#' + id[i]).attr('placeholder', '別忘了輸入你的' + idName[i] + '啊！');
 			result = false;
 		}
-	}	
+	}*/	
 	return result;
 }
 
@@ -92,11 +93,14 @@ function showFormThree(){
 	allData['otherDietInfo'] = $('#otherDietInfo').val();
 	var illnessId = ['無', '心臟病', '癲險', '氣喘', '貧血', '高血壓蠶豆症'];
 	allData['illness'] = '';
-	for (var i = 0; i < illnessId.length; i++){
-		if ($('#illness' + i).attr('checked'))
-			allData['illness'] = allData['illness'] + '、'  + illnessId[i];
-	}
-	allData['illness'] = allData['illness'] + $('#illnessInfo').val();
+	$('#illness:checked').each(function(){
+		//alert(illnessId[i]);
+		allData['illness'] = allData['illness'] + $(this).val()  + '、';
+	});	
+	if ($('#otherIllness').val() != '')
+		allData['illness'] = allData['illness'] + $('#otherIllness').val();
+	else
+		allData['illness'] = allData['illness'].substring(0, s.length - 1);
 	$('#joinForm').load('form/formThree.html');
 }
 
@@ -111,13 +115,13 @@ function checkResult(){
 		var allIdName = ['姓名', '綽號', '性別', '身分證字號', '聯絡電話', '手機', '地址', 'email', '學校', '年級', '緊急聯絡人姓名', '緊急聯絡人關係', '緊急聯絡人電話', '緊急聯絡人地址', 'T-shirt大小', '飲食','特殊飲食習慣', '疾病', '自我介紹', '營隊訊息來源', '備註'];
 		var result = '<h3>恭喜你填完報名表了！<br>來確認一下你的資料吧</h3><dl class="dl-horizontal">';
 		for (var i = 0; i < allId.length; i++){
-			if (allData[allId[i]] == '')
+			if (allData[allId[i]] == 'undefined')
 				allData[allId[i]] = '無';
 			result = result + '<dt>' + allIdName[i] + '</dt><dd>'  + allData[allId[i]] + '</dd>';
 		}
 		result = result + '</dl>';
 		result = result + "<div align='center'><button type='button' class='btn btn-default submit' onclick='storageForm()'>確認送出</button></div>";
-		$('.joinForm').html(result);
+		$('#joinForm').html(result);
 	}
 }
 

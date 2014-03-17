@@ -1,9 +1,5 @@
 <?php
-define('DB_NAME','camp_data');
-define('DB_USER','root');
-define('DB_PASSWD','[mathcamp@MCL]');
-define('DB_HOST','localhost');
-define('DB_TYPE','mysql');
+include '../sqlInfo.php';
 $connect = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWD);
 $connect->query('SET NAMES UTF8');
 $result = $connect->prepare("INSERT into join_member values(
@@ -51,5 +47,4 @@ $where = array(
 			':source' => $_POST['source'], 
 			':addition' => $_POST['addition']);
 $result->execute($where);
-echo 'yes';
 ?>
