@@ -37,16 +37,17 @@ function storageForm(){
 	});
 }
 
-function validateForm(){
+function validateForm(id){
 	var result = true;
-	if ($('.required').val() == ''){
-		$('.required').attr('placeholder', '別忘記輸入啊！');
-		$('#' + $(this).attr('id')).addClass('has-error');
-		alert('#' + $(this).attr('id'));
-		result = false;
-	}else
-		$('.requiredForm').addClass('has-success');
-
+	for (var i = 0; i < id.length; i++){
+		if ($('#' + id[i]).val() == ''){
+			$('#' + id[i]).attr('placeholder', '別忘記輸入啊！');
+			$('#' + id[i] + 'Form').addClass('has-error');
+			result = false;
+			break;
+		}else
+			$('#' + id[i] + 'Form').addClass('has-success');
+	}
 	
 	/*if ($('.email').val() != '' && !checkEmail($('.email').val())){
 		$('#emailErrorMessage').empty();
@@ -119,7 +120,7 @@ function loadPreviousData(id) {
 
 function showFormOne(){
 	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
-	if(validateForm()){	
+	if(validateForm(id)){	
 		// Storage data
 		storageData(id);
 		allData['sex'] = $('input[name=sex]:checked', '#joinForm').val();	
