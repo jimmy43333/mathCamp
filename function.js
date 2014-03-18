@@ -46,7 +46,7 @@ function validateForm(){
 	}else
 		$('.required').addClass('has-success');
 	
-	/*if ($('.email').val() != '' && !checkEmail($('.email').val())){
+	if ($('.email').val() != '' && !checkEmail($('.email').val())){
 		$('#emailErrorMessage').empty();
 		$('.emailForm').addClass('has-error');
 		$('<div align="right" id="emailErrorMessage"><label class="control-label">你的email好像有問題喔！</label></div>').appendTo('.emailForm');
@@ -54,7 +54,7 @@ function validateForm(){
 	}else
 		$('.email').addClass('has-success');
 	
-	if($('.securityNumber').val() != '' && !checkSecurityNumber($('.securityNumber').val())){
+	/*if($('.securityNumber').val() != '' && !checkSecurityNumber($('.securityNumber').val())){
 		$('#securityNumberErrorMessage').empty();
 		$('.securityNumberForm').addClass('has-error');
 		$('<div align="right" id="securityNumberErrorMessage"><label class="control-label">你的身分證字號好像有問題喔！</label></div>').appendTo('.securityNumberForm');
