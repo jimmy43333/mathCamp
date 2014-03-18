@@ -63,6 +63,7 @@ function showFormZero(){
 	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
 	for (var i = 0; i < id.length; i++){
 		$('#' + id[i]).attr('value', allData[id[i]]);
+		alert('#' + id[i]);
 	}
 	//$('#' + allData['sex']).attr('checked', true);
 }
