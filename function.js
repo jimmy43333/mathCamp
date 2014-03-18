@@ -57,15 +57,14 @@ function storageData(id){
 	}
 }
 
-function showFormZero(){
+function showFormZero() {
 	$('#joinForm').load('form/formZero.html');
-	// Show previous value user type.
-	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
+}
+
+function loadPreviousData(id) {
 	for (var i = 0; i < id.length; i++){
-		alert(allData[id[i]]);
 		$('#' + id[i]).val(allData[id[i]]);
 	}
-	//$('#' + allData['sex']).attr('checked', true);
 }
 
 function showFormOne(){
