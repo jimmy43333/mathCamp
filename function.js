@@ -38,6 +38,14 @@ function storageForm(){
 	});
 }
 
+function validateForm(){
+	if ($('.required').val() == '' || $('.required').val() == null){
+		$('.required').attr('placeholder', '別忘記輸入啊！');
+		return false;
+	}else
+		return true;
+}
+
 function checkForm(id, idName){
 	var result = true;
 	for (var i = 0; i < id.length; i++){
@@ -97,7 +105,7 @@ function showFormOne(){
 function showFormTwo(){
 	var id = ['parentsName', 'parentsRelation', 'parentsPhone', 'parentsAddress'];
 	var idName = ['聯絡人姓名', '緊急聯絡人的關係', '緊急聯絡人的電話', '緊急聯絡人的地址'];
-	if (checkForm(id, idName)){
+	if (validateForm()){
 		// Storage data
 		storageData(id);
 		$('#joinForm').load('form/formTwo.html')
