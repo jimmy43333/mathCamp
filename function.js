@@ -39,14 +39,14 @@ function storageForm(){
 
 function validateForm(){
 	var result = true;
-	/*if ($('.required').val() == '' || $('.required').val() == null){
+	if ($('.required').val() == '' || $('.required').val() == null){
 		$('.required').attr('placeholder', '別忘記輸入啊！');
 		$('.required').addClass('has-error');
 		result = false;
 	}else
 		$('.required').addClass('has-success');
 	
-	if ($('.email').val() != '' && !checkEmail($('.email').val())){
+	/*if ($('.email').val() != '' && !checkEmail($('.email').val())){
 		$('#emailErrorMessage').empty();
 		$('.emailForm').addClass('has-error');
 		$('<div align="right" id="emailErrorMessage"><label class="control-label">你的email好像有問題喔！</label></div>').appendTo('.emailForm');
