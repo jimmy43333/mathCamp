@@ -43,11 +43,27 @@ function checkForm(id, idName){
 	for (var i = 0; i < id.length; i++){
 		$('#' + id[i] + 'Form').removeClass('has-error');
 		if ($('#' + id[i]).val() == ''){
-			$('#' + id[i] + 'Form').addClass('has-error');
+			$('#' + id[i] + 'Form').addClass('has-error has-feedback');
 			$('#' + id[i]).attr('placeholder', '別忘了輸入你的' + idName[i] + '啊！');
 			result = false;
+		}else{
+			$('#' + id[i] + 'Form').addClass('has-success has-feedback');
 		}
-	}	
+	}
+	if(id[0] == 'name'){
+		if($('#email').val() != '' && !checkEmail($('#email').val())){
+			$('#emailErrorMessage').empty();
+			$('#emailForm').addClass('has-error');
+			$('<div align="right" id="emailErrorMessage"><label class="control-label">你的email好像有問題喔！</label></div>').appendTo('#emailForm');
+			result = false;
+		}
+		if($('#securityNumber').val() != '' && !checkSecurityNumber($('#securityNumber').val())){
+			$('#securityNumberErrorMessage').empty();
+			$('#securityNumberForm').addClass('has-error');
+			$('<div align="right" id="securityNumberErrorMessage"><label class="control-label">你的身分證字號好像有問題喔！</label></div>').appendTo('#securityNumberForm');
+			result = false;
+		}
+	}
 	return result;
 }
 
@@ -70,7 +86,7 @@ function loadPreviousData(id) {
 function showFormOne(){
 	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
 	var idName = ['大名', '綽號', '身分證字號', '電話', '手機', '地址', 'email', '學校', '年級'];
-	if(checkForm(id, idName)){
+	if(checkForm(id, idName)){	
 		// Storage data
 		storageData(id);
 		allData['sex'] = $('input[name=sex]:checked', '#joinForm').val();	
@@ -126,7 +142,18 @@ function checkResult(){
 	}
 }
 
-function checkID(id) {
+function checkEmail(email) {
+	var atPos = email.indexOf('@');
+	var dotPos = email.lastIndexOf('.');
+	if (atPos<1 || dotPos<atPos+2 || dotPos+2>=email.length)
+		return false;
+	else{
+		$('#emailErrorMessage').empty();
+		return true;
+	}
+}
+
+function checkSecurityNumber(id) {
   tab = "ABCDEFGHJKLMNPQRSTUVXYWZIO";              
   A1 = new Array (1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3 );
   A2 = new Array (0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5 );
@@ -142,6 +169,11 @@ function checkID(id) {
       if ( isNaN(v) ) return false;
       sum = sum + v * Mx[i];
     }
-  if ( sum % 10 != 0 ) return false;
-  return true;
+  if ( sum % 10 != 0 ) 
+	  return false;
+  else{
+	  $('#securityNumberErrorMessage').empty();
+	  return true;
+	
+  }
 }
