@@ -59,7 +59,7 @@ function validateForm(){
 		$('.securityNumberForm').addClass('has-error');
 		$('<div align="right" id="securityNumberErrorMessage"><label class="control-label">你的身分證字號好像有問題喔！</label></div>').appendTo('.securityNumberForm');
 		result = false;
-	else
+	}else
 		$('.securityNumber').addClass('has-success');
 	
 	return result;
