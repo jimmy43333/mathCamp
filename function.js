@@ -42,6 +42,7 @@ function validateForm(){
 	if ($('.required').val() == ''){
 		$('.required').attr('placeholder', '別忘記輸入啊！');
 		$('#' + $(this).attr('id')).addClass('has-error');
+		alert('#' + $(this).attr('id'));
 		result = false;
 	}else
 		$('.requiredForm').addClass('has-success');
