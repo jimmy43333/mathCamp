@@ -54,14 +54,14 @@ function validateForm(){
 	}else
 		$('.email').addClass('has-success');
 	
-	/*if($('.securityNumber').val() != '' && !checkSecurityNumber($('.securityNumber').val())){
+	if($('.securityNumber').val() != '' && !checkSecurityNumber($('.securityNumber').val())){
 		$('#securityNumberErrorMessage').empty();
 		$('.securityNumberForm').addClass('has-error');
 		$('<div align="right" id="securityNumberErrorMessage"><label class="control-label">你的身分證字號好像有問題喔！</label></div>').appendTo('.securityNumberForm');
 		result = false;
 	else
 		$('.securityNumber').addClass('has-success');
-	*/
+	
 	return result;
 }
 
