@@ -62,7 +62,8 @@ function showFormZero(){
 	// Show previous value user type.
 	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
 	for (var i = 0; i < id.length; i++){
-		$('#' + id[i]).val('"' + allData[id[i]] + '"');
+		alert(allData[id[i]]);
+		$('#' + id[i]).val(allData[id[i]]);
 	}
 	//$('#' + allData['sex']).attr('checked', true);
 }
