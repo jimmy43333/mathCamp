@@ -3,9 +3,8 @@ var allData = [];
 function storageForm(){
 	$.ajax({
 		type: 'POST',
-		url:'processJoin.php',
+		url :'processJoin.php',
 		data: {
-			test: 'fucnk',
 			name: allData['name'],
 			nickname: allData['nickname'],
 			sex: allData['sex'],
@@ -40,7 +39,7 @@ function storageForm(){
 
 function validateForm(){
 	var result = true;
-	if ($('.required').val() == '' || $('.required').val() == null){
+	/*if ($('.required').val() == '' || $('.required').val() == null){
 		$('.required').attr('placeholder', '別忘記輸入啊！');
 		$('.required').addClass('has-error');
 		result = false;
@@ -62,7 +61,7 @@ function validateForm(){
 		result = false;
 	else
 		$('.securityNumber').addClass('has-success');
-	
+	*/
 	return result;
 }
 
@@ -83,7 +82,8 @@ function checkSecurityNumber(id) {
 	A2 = new Array (0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5 );
 	Mx = new Array (9,8,7,6,5,4,3,2,1,1);
 
-	if ( id.length != 10 ) return false;
+	if ( id.length != 10 ) 
+		return false;
 	i = tab.indexOf( id.charAt(0) );
 	if ( i == -1 ) return false;
 	sum = A1[i] + A2[i]*9;
