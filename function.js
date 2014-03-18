@@ -44,7 +44,6 @@ function validateForm(id){
 			$('#' + id[i]).attr('placeholder', '別忘記輸入啊！');
 			$('#' + id[i] + 'Form').addClass('has-error');
 			result = false;
-			break;
 		}else
 			$('#' + id[i] + 'Form').addClass('has-success');
 	}
@@ -130,7 +129,7 @@ function showFormOne(){
 
 function showFormTwo(){
 	var id = ['parentsName', 'parentsRelation', 'parentsPhone', 'parentsAddress'];
-	if (validateForm()){
+	if (validateForm(id)){
 		// Storage data
 		storageData(id);
 		$('#joinForm').load('form/formTwo.html')
