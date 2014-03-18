@@ -39,14 +39,15 @@ function storageForm(){
 
 function validateForm(){
 	var result = true;
-	if ($('.required').val() == '' || $('.required').val() == null){
+	if ($('.required').val() == ''){
 		$('.required').attr('placeholder', '別忘記輸入啊！');
-		$('.required').addClass('has-error');
+		$('.requiredForm').addClass('has-error');
 		result = false;
 	}else
 		$('.required').addClass('has-success');
+
 	
-	if ($('.email').val() != '' && !checkEmail($('.email').val())){
+	/*if ($('.email').val() != '' && !checkEmail($('.email').val())){
 		$('#emailErrorMessage').empty();
 		$('.emailForm').addClass('has-error');
 		$('<div align="right" id="emailErrorMessage"><label class="control-label">你的email好像有問題喔！</label></div>').appendTo('.emailForm');
@@ -60,7 +61,7 @@ function validateForm(){
 		$('<div align="right" id="securityNumberErrorMessage"><label class="control-label">你的身分證字號好像有問題喔！</label></div>').appendTo('.securityNumberForm');
 		result = false;
 	}else
-		$('.securityNumber').addClass('has-success');
+		$('.securityNumber').addClass('has-success');*/
 	
 	return result;
 }
