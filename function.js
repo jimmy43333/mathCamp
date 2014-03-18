@@ -40,6 +40,7 @@ function storageForm(){
 function validateForm(){
 	var result = true;
 	if ($('.required').val() == ''){
+		alert($('.required').val());
 		$('.required').attr('placeholder', '別忘記輸入啊！');
 		$('.requiredForm').addClass('has-error');
 		result = false;
