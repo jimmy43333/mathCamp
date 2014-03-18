@@ -39,40 +39,67 @@ function storageForm(){
 }
 
 function validateForm(){
+	var result = true;
 	if ($('.required').val() == '' || $('.required').val() == null){
 		$('.required').attr('placeholder', '別忘記輸入啊！');
-		return false;
+		$('.required').addClass('has-error');
+		result = false;
 	}else
-		return true;
+		$('.required').addClass('has-success');
+	
+	if ($('.email').val() != '' && !checkEmail($('.email').val())){
+		$('#emailErrorMessage').empty();
+		$('.emailForm').addClass('has-error');
+		$('<div align="right" id="emailErrorMessage"><label class="control-label">你的email好像有問題喔！</label></div>').appendTo('.emailForm');
+		result = false;
+	}else
+		$('.email').addClass('has-success');
+	
+	if($('.securityNumber').val() != '' && !checkSecurityNumber($('.securityNumber').val())){
+		$('#securityNumberErrorMessage').empty();
+		$('.securityNumberForm').addClass('has-error');
+		$('<div align="right" id="securityNumberErrorMessage"><label class="control-label">你的身分證字號好像有問題喔！</label></div>').appendTo('.securityNumberForm');
+		result = false;
+	else
+		$('.securityNumber').addClass('has-success');
+	
+	return true;
 }
 
-function checkForm(id, idName){
-	var result = true;
-	for (var i = 0; i < id.length; i++){
-		$('#' + id[i] + 'Form').removeClass('has-error');
-		if ($('#' + id[i]).val() == ''){
-			$('#' + id[i] + 'Form').addClass('has-error has-feedback');
-			$('#' + id[i]).attr('placeholder', '別忘了輸入你的' + idName[i] + '啊！');
-			result = false;
-		}else{
-			$('#' + id[i] + 'Form').addClass('has-success has-feedback');
-		}
+function checkEmail(email) {
+	var atPos = email.indexOf('@');
+	var dotPos = email.lastIndexOf('.');
+	if (atPos<1 || dotPos<atPos+2 || dotPos+2>=email.length)
+		return false;
+	else{
+		$('#emailErrorMessage').empty();
+		return true;
 	}
-	if(id[0] == 'name'){
-		if($('#email').val() != '' && !checkEmail($('#email').val())){
-			$('#emailErrorMessage').empty();
-			$('#emailForm').addClass('has-error');
-			$('<div align="right" id="emailErrorMessage"><label class="control-label">你的email好像有問題喔！</label></div>').appendTo('#emailForm');
-			result = false;
-		}
-		if($('#securityNumber').val() != '' && !checkSecurityNumber($('#securityNumber').val())){
-			$('#securityNumberErrorMessage').empty();
-			$('#securityNumberForm').addClass('has-error');
-			$('<div align="right" id="securityNumberErrorMessage"><label class="control-label">你的身分證字號好像有問題喔！</label></div>').appendTo('#securityNumberForm');
-			result = false;
-		}
-	}
-	return result;
+}
+
+function checkSecurityNumber(id) {
+  tab = "ABCDEFGHJKLMNPQRSTUVXYWZIO";              
+  A1 = new Array (1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3 );
+  A2 = new Array (0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5 );
+  Mx = new Array (9,8,7,6,5,4,3,2,1,1);
+
+  if ( id.length != 10 ) return false;
+  i = tab.indexOf( id.charAt(0) );
+  if ( i == -1 ) return false;
+  sum = A1[i] + A2[i]*9;
+
+  for ( i=1; i<10; i++ ) {
+      v = parseInt( id.charAt(i) );
+      if ( isNaN(v) ) return false;
+      sum = sum + v * Mx[i];
+    }
+  if ( sum % 10 != 0 ) 
+	  return false;
+  else{
+	  $('#securityNumberErrorMessage').empty();
+	  return true;
+	
+  }
 }
 
 function storageData(id){
@@ -93,8 +120,7 @@ function loadPreviousData(id) {
 
 function showFormOne(){
 	var id = ['name', 'nickname', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade'];
-	var idName = ['大名', '綽號', '身分證字號', '電話', '手機', '地址', 'email', '學校', '年級'];
-	if(checkForm(id, idName)){	
+	if(validateForm()){	
 		// Storage data
 		storageData(id);
 		allData['sex'] = $('input[name=sex]:checked', '#joinForm').val();	
@@ -104,7 +130,6 @@ function showFormOne(){
 
 function showFormTwo(){
 	var id = ['parentsName', 'parentsRelation', 'parentsPhone', 'parentsAddress'];
-	var idName = ['聯絡人姓名', '緊急聯絡人的關係', '緊急聯絡人的電話', '緊急聯絡人的地址'];
 	if (validateForm()){
 		// Storage data
 		storageData(id);
@@ -148,40 +173,4 @@ function checkResult(){
 		result = result + "<div align='center'><button type='button' class='btn btn-default submit' onclick='storageForm()'>確認送出</button></div>";
 		$('#joinForm').html(result);
 	}
-}
-
-function checkEmail(email) {
-	var atPos = email.indexOf('@');
-	var dotPos = email.lastIndexOf('.');
-	if (atPos<1 || dotPos<atPos+2 || dotPos+2>=email.length)
-		return false;
-	else{
-		$('#emailErrorMessage').empty();
-		return true;
-	}
-}
-
-function checkSecurityNumber(id) {
-  tab = "ABCDEFGHJKLMNPQRSTUVXYWZIO";              
-  A1 = new Array (1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3 );
-  A2 = new Array (0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5 );
-  Mx = new Array (9,8,7,6,5,4,3,2,1,1);
-
-  if ( id.length != 10 ) return false;
-  i = tab.indexOf( id.charAt(0) );
-  if ( i == -1 ) return false;
-  sum = A1[i] + A2[i]*9;
-
-  for ( i=1; i<10; i++ ) {
-      v = parseInt( id.charAt(i) );
-      if ( isNaN(v) ) return false;
-      sum = sum + v * Mx[i];
-    }
-  if ( sum % 10 != 0 ) 
-	  return false;
-  else{
-	  $('#securityNumberErrorMessage').empty();
-	  return true;
-	
-  }
 }
