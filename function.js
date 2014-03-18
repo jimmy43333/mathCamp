@@ -39,9 +39,9 @@ function storageForm(){
 
 function validateForm(){
 	var result = true;
-	if ($('#name').val() == ''){
-		$('#name').attr('placeholder', '別忘記輸入啊！');
-		$('#name').addClass('has-error');
+	if ($('.required').val() == ''){
+		$('.required').attr('placeholder', '別忘記輸入啊！');
+		$('.requiredForm').addClass('has-error');
 		result = false;
 	}else
 		$('.requiredForm').addClass('has-success');
