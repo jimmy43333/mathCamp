@@ -25,7 +25,6 @@ body {
 
 .introduction {	
 	position: absolute;
-	overflow: auto;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -43,21 +42,26 @@ body {
 .white {
 	background-color: #FFFBF0;
 	color:	#3F4850;
-	overflow: visible;
+
 }
 
 .gray {
 	background-color: #D4F2E7;
 	color: #3F4850;
-	overflow: visible;
+
 }
 
 .block {
 	position: relative;
-	overflow: visible;
 	width: 100%;
-	min-height: 800px;
+	min-height: 500px;
 	height: 100%;
+}
+
+.titleblock{
+	width: 100%;
+	min-height: 250px;
+	height: 50%;
 }
 
 .joinForm {
