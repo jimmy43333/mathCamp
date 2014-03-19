@@ -49,10 +49,17 @@ body {
 	color: #3F4850;
 }
 
-.block {
+.bigblock {
 	position: relative;
 	width: 100%;
 	min-height: 800px;
+	height: 100%;
+}
+
+.littleblock {
+	position: relative;
+	width: 100%;
+	min-height: 500px;
 	height: 100%;
 }
 
