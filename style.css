@@ -63,6 +63,12 @@ body {
 	height: 30%;
 }
 
+.ublock{
+	position: relative;
+	width: 100%;
+	min-height: 100px;
+	height: 70%;
+}
 
 .joinForm {
 	position: absolute;
