@@ -42,11 +42,13 @@ body {
 .white {
 	background-color: #FFFBF0;
 	color:	#3F4850;
+	overflow: visible;
 }
 
 .gray {
 	background-color: #D4F2E7;
 	color: #3F4850;
+	overflow: visible;
 }
 
 .block {
