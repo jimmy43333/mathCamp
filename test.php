@@ -1,5 +1,6 @@
 <?php
 session_start();
-echo $_SESSION['name'];
-echo '<br>'.$_SESSION['sex'];
+$_SESSION['fuck'] = $_POST['s'];
+	echo $_SESSION['test'];
+	echo $_SESSION['fuck'];
 ?>

@@ -40,13 +40,13 @@ body {
 }
 
 .white {
-	background-color: #FFFBF0;
+	background-color: white;
 	color:	#3F4850;
 
 }
 
 .gray {
-	background-color: #D4F2E7;
+	background-color: #F2F2F2;
 	color: #3F4850;
 
 }
@@ -65,16 +65,13 @@ body {
 }
 
 .joinForm {
+	margin: auto;
+	left: 0;
+	right: 0;
 	position: absolute;
 	min-width: 200px;
 	width: 50%;
 	max-width: 600px;
-	height: 50%;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
 }
 
 .photoBackground {
