@@ -91,6 +91,13 @@ body {
 	height: 70%;
 }
 
+.ninthblock{
+	position: relative;
+	width: 100%;
+	min-height: 100px;
+	height: 90%;
+}
+
 .joinForm {
 	position: absolute;
 	min-width: 200px;
