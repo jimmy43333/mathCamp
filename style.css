@@ -56,6 +56,14 @@ body {
 	height: 100%;
 }
 
+.tblock{
+	position: relative;
+	width: 100%;
+	min-height: 800px;
+	height: 30%;
+}
+
+
 .joinForm {
 	position: absolute;
 	min-width: 200px;
