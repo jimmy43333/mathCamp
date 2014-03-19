@@ -60,9 +60,13 @@ body {
 	position: relative;
 	width: 100%;
 	height: 15%;
+	padding-top:30%;
+        padding-left:10px;
+        padding-right:30px;
+        padding-bottom:30%;
 }
 
-.ublock{
+.seventhblock{
 	position: relative;
 	width: 100%;
 	min-height: 100px;
@@ -83,15 +87,4 @@ body {
 }
 
 
-.bottomblock {
-	position: relative;
-	width: 100%;
-	height: 40%;
-}
 
-.tcenter {
-  padding-top:30%;
-  padding-left:10px;
-  padding-right:30px;
-  padding-bottom:30%; 
-}
