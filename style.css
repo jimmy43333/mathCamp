@@ -82,3 +82,7 @@ body {
 	margin: auto;
 }
 
+
+.photoBackground block {
+	background-image:url(D.jpg);
+}
