@@ -59,8 +59,8 @@ body {
 .tblock{
 	position: relative;
 	width: 100%;
-	min-height: 800px;
-	height: 10%;
+	min-height: 100px;
+	height: 30%;
 }
 
 
