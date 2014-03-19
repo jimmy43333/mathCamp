@@ -38,32 +38,34 @@ function storageForm(){
 	});
 }
 
-function validateForm(id){
+function validateForm(){
 	var result = true;
 	for (var i = 0; i < id.length; i++){
 		if ($('#' + id[i]).val() == ''){
 			$('#' + id[i]).attr('placeholder', '別忘記輸入啊！');
 			$('#' + id[i] + 'Form').addClass('has-error');
 			result = false;
-		}else
-			$('#' + id[i] + 'Form').addClass('has-success');
+		}else{
+			$('#' + id[i] + 'Form').removeClass('has-error');
+			$('#' + id[i] + 'Form').addClass('has-success')
+		}
 	}
 
-	/*if ($('.email').val() != '' && !checkEmail($('.email').val())){
+	if ($('#email').val() != '' && !checkEmail($('#email').val())){
 	  $('#emailErrorMessage').empty();
-	  $('.emailForm').addClass('has-error');
-	  $('<div align="right" id="emailErrorMessage"><label class="control-label">你的email好像有問題喔！</label></div>').appendTo('.emailForm');
+	  $('#emailForm').addClass('has-error');
+	  $('<div align="right" id="emailErrorMessage"><label class="control-label">你的email好像有問題喔！</label></div>').appendTo('#emailForm');
 	  result = false;
-	  }else
-	  $('.email').addClass('has-success');
+	 }else
+	  $('#email').addClass('has-success');
 
-	  if($('.securityNumber').val() != '' && !checkSecurityNumber($('.securityNumber').val())){
+	  if($('#securityNumber').val() != '' && !checkSecurityNumber($('#securityNumber').val())){
 	  $('#securityNumberErrorMessage').empty();
-	  $('.securityNumberForm').addClass('has-error');
-	  $('<div align="right" id="securityNumberErrorMessage"><label class="control-label">你的身分證字號好像有問題喔！</label></div>').appendTo('.securityNumberForm');
+	  $('#securityNumberForm').addClass('has-error');
+	  $('<div align="right" id="securityNumberErrorMessage"><label class="control-label">你的身分證字號好像有問題喔！</label></div>').appendTo('#securityNumberForm');
 	  result = false;
 	  }else
-	  $('.securityNumber').addClass('has-success');*/
+	  $('#securityNumber').addClass('has-success');
 
 	return result;
 }
@@ -102,13 +104,14 @@ function checkSecurityNumber(id) {
 		return true;
 }
 
-function storageData(id){
+function storageData(){
 	for (var i = 0; i < id.length; i++){
 		allData[id[i]] = $('#' + id[i]).val();
 	}
 	allData['tshirtsize'] = $('input[name=tshirtsize]:checked', '#joinForm').val();
 	allData['diet'] =  $('input[name=diet]:checked', '#joinForm').val();
 	allData['otherDietInfo'] = $('#otherDietInfo').val();
+	allData['sex'] = $('input[name=sex]:checked', '#joinForm').val();
 	var illnessId = ['無', '心臟病', '癲險', '氣喘', '貧血', '高血壓蠶豆症'];
 	allData['illness'] = ''; 
 	$('#illness:checked').each(function(){
@@ -132,17 +135,18 @@ function loadPreviousData(id) {
 
 function checkResult(){
 	// Storage data
-	storageData(id);
-	allData['addition'] = $('#addition').val();
-	var allId = ['name', 'nickname', 'sex', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade', 'parentsName', 'parentsRelation', 'parentsPhone', 'parentsAddress', 'tshirtsize', 'diet', 'otherDietInfo', 'illness', 'introduction', 'source', 'addition'];
-	var allIdName = ['姓名', '綽號', '性別', '身分證字號', '聯絡電話', '手機', '地址', 'email', '學校', '年級', '緊急聯絡人姓名', '緊急聯絡人關係', '緊急聯絡人電話', '緊急聯絡人地址', 'T-shirt大小', '飲食','特殊飲食習慣', '疾病', '自我介紹', '營隊訊息來源', '備註'];
-	var result = '<h3>恭喜你填完報名表了！<br>來確認一下你的資料吧</h3><dl class="dl-horizontal">';
-	for (var i = 0; i < allId.length; i++){
-		if (allData[allId[i]] == 'undefined')
-			allData[allId[i]] = '無';
-		result = result + '<dt>' + allIdName[i] + '</dt><dd>'  + allData[allId[i]] + '</dd>';
+	storageData();
+	if(validateForm()){
+		var allId = ['name', 'nickname', 'sex', 'securityNumber', 'phone', 'cellphone', 'address', 'email', 'school', 'grade', 'parentsName', 'parentsRelation', 'parentsPhone', 'parentsAddress', 'tshirtsize', 'diet', 'otherDietInfo', 'illness', 'introduction', 'source', 'addition'];
+		var allIdName = ['姓名', '綽號', '性別', '身分證字號', '聯絡電話', '手機', '地址', 'email', '學校', '年級', '緊急聯絡人姓名', '緊急聯絡人關係', '緊急聯絡人電話', '緊急聯絡人地址', 'T-shirt大小', '飲食','特殊飲食習慣', '疾病', '自我介紹', '營隊訊息來源', '備註'];
+		var result = '<h3>恭喜你填完報名表了！<br>來確認一下你的資料吧</h3><dl class="dl-horizontal">';
+		for (var i = 0; i < allId.length; i++){
+			if (allData[allId[i]] == 'undefined')
+				allData[allId[i]] = '無';
+			result = result + '<dt>' + allIdName[i] + '</dt><dd>'  + allData[allId[i]] + '</dd>';
+		}
+		result = result + '</dl>';
+		result = result + "<div align='center'><button type='button' class='btn btn-default submit' onclick='storageForm()'>確認送出</button></div>";
+		$('.joinForm').html(result);
 	}
-	result = result + '</dl>';
-	result = result + "<div align='center'><button type='button' class='btn btn-default submit' onclick='storageForm()'>確認送出</button></div>";
-	$('#joinForm').html(result);
 }
