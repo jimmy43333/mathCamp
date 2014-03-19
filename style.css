@@ -59,8 +59,7 @@ body {
 .tblock{
 	position: relative;
 	width: 100%;
-	min-height: 100px;
-	height: 30%;
+	height: 15%;
 }
 
 .ublock{
