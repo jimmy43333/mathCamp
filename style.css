@@ -25,6 +25,17 @@ body {
 	
 }
 
+.introcenter{
+	position: absolute;
+	top: 10%;
+	bottom: 20%;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 200%;
+	
+}
+
 .signcenter{	
 	position: absolute;
 	top: 20%;
